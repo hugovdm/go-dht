@@ -55,12 +55,18 @@ static int gpio_export(int port, Pin *pin) {
     write(fd, buffer, bytes_written);
     close(fd);
 
+    // Sleeping for 30ms was insufficient on a Pi 2.
+    int quick_sleep_msec = 40;
+    sleep_usec(quick_sleep_msec * 1000);
+
     #define DIRECTION_MAX 35
     char path1[DIRECTION_MAX];
     snprintf(path1, DIRECTION_MAX, "/sys/class/gpio/gpio%d/direction", (*pin).pin);
     (*pin).fd_direction = open(path1, O_WRONLY);
     if (-1 == (*pin).fd_direction) {
-        fprintf(stderr, "Failed to open gpio direction for writing!\n");
+        fprintf(stderr,
+		"Failed to open gpio direction for writing! Need more sleep "
+		"after export?\n");
         return -1;
     }
                              
