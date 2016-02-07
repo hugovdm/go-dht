@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	// Read DHT11 sensor data from pin 4, retrying 10 times in case of failure.
+	// Read DHT22 sensor data from pin 4, retrying 10 times in case of failure.
 	// You may enable "boost GPIO performance" parameter, if your device is old
 	// as Raspberry PI 1 (this will require root privileges). You can switch off
 	// "boost GPIO performance" parameter for old devices, but it may increase
