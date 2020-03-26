@@ -56,7 +56,7 @@ static int gpio_export(int port, Pin *pin) {
     close(fd);
 
     // Sleeping for 30ms was insufficient on a Pi 2.
-    int quick_sleep_msec = 40;
+    int quick_sleep_msec = 50;
     sleep_usec(quick_sleep_msec * 1000);
 
     #define DIRECTION_MAX 35
